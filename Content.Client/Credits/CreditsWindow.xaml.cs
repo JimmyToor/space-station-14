@@ -313,6 +313,7 @@ public sealed partial class CreditsWindow : DefaultWindow
 
         return sequence
             .Cast<YamlMappingNode>()
+            .Where(m => PatronTierPriority.ContainsKey(m["Tier"].AsString()))
             .Select(m => new PatronEntry(m["Name"].AsString(), m["Tier"].AsString()));
     }
 
